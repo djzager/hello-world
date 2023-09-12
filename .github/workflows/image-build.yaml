@@ -16,3 +16,10 @@ concurrency:
 jobs:
   image-build:
     uses: djzager/release-tools/.github/workflows/build-push-images.yaml@build
+    with:
+      image_name: "hello-world"
+      image_namespace: "djzager"
+      image_registry: "quay.io"
+      containerfile: "./Dockerfile"
+      ref: ${{ github.ref }}
+      architectures: '[ "amd64", "arm64", "ppc64le", "s390x"]'
