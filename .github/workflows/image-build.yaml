@@ -17,9 +17,11 @@ jobs:
   image-build:
     uses: djzager/release-tools/.github/workflows/build-push-images.yaml@build
     with:
+      registry: "quay.io"
+      registry_username: ${{ secrets.QUAY_PUBLISH_ROBOT }}
+      registry_password: ${{ secrets.QUAY_PUBLISH_TOKEN }}
       image_name: "hello-world"
       image_namespace: "djzager"
-      image_registry: "quay.io"
       containerfile: "./Dockerfile"
       ref: ${{ github.ref }}
-      architectures: '[ "amd64", "arm64", "ppc64le", "s390x"]'
+      architectures: '[ "amd64", "arm64", "ppc64le", "s390x" ]'
